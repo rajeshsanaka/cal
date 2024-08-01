@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .calculator {
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      width: 300px;
+    }
+    .display {
+      height: 50px;
+      text-align: right;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 1.5em;
+    }
+    .button {
+      height: 60px;
+      font-size: 1.2em;
+      border-radius: 10px;
+      ;
+      margin: 5px;
+    }
+    .but{
+        background-color: black;
+    }
+    .cal{
+        background-color: blue;
+        color: #fff;
+        text-align: center;
+        font-size: larger;
+    }
+    @media screen and (min-wdith:500px) {
+       .cal{
+        padding: 20px 100px;
+        color: black;
+
+       }
+        
+    }
+
+  </style>
+</head>
+<body>
+<div class="cal">Calculator</div>
+<div class="container">
+  <div class="calculator bg-light">
+    <input type="text" class="form-control display" id="display" readonly>
+    <div class="row">
+      <button class="btn btn-secondary col button but " onclick="appendToDisplay('1')">1</button>
+      <button class="btn btn-secondary col button" onclick="appendToDisplay('2')">2</button>
+      <button class="btn btn-secondary col button" onclick="appendToDisplay('3')">3</button>
+      <button class="btn btn-warning col button" onclick="appendToDisplay('+')">+</button>
+    </div>
+    <div class="row">
+      <button class="btn btn-secondary col button" onclick="appendToDisplay('4')">4</button>
+      <button class="btn btn-secondary col button" onclick="appendToDisplay('5')">5</button>
+      <button class="btn btn-secondary col button" onclick="appendToDisplay('6')">6</button>
+      <button class="btn btn-warning col button" onclick="appendToDisplay('-')">-</button>
+    </div>
+    <div class="row">
+      <button class="btn btn-secondary col button" onclick="appendToDisplay('7')">7</button>
+      <button class="btn btn-secondary col button" onclick="appendToDisplay('8')">8</button>
+      <button class="btn btn-secondary col button" onclick="appendToDisplay('9')">9</button>
+      <button class="btn btn-warning col button" onclick="appendToDisplay('*')">*</button>
+    </div>
+    <div class="row">
+      <button class="btn btn-secondary col button" onclick="appendToDisplay('0')">0</button>
+      <button class="btn btn-danger col button" onclick="clearDisplay()">C</button>
+      <button class="btn btn-success col button" onclick="calculateResult()">=</button>
+      <button class="btn btn-warning col button" onclick="appendToDisplay('/')">/</button>
+    </div>
+    <div class="row">
+<buttonw class="btn btn-warning col button"  onclick="sqrt()">sqrt</button>
+    </div>
+  </div>
+</div>
+
+<script>
+    function appendToDisplay(value) {
+    document.getElementById('display').value += value;
+  }
+  
+  function clearDisplay() {
+    document.getElementById('display').value = '';
+  }
+  
+  function calculateResult() {
+    try {
+      const result = eval(document.getElementById('display').value);
+      document.getElementById('display').value = result;
+    } catch (e) {
+      alert('Invalid expression');
+    }
+  }
+  function sqrt(){      
+    try{
+        
+        const value = document.getElementById('display').value;
+    const result = Math.sqrt(eval(value));
+    document.getElementById('display').value = result;
+    }
+    catch(e){
+        alert('Invalid expression.');
+    }
+  }
+</script>
+</body>
+</html>
